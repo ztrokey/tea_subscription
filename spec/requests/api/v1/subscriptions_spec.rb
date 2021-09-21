@@ -85,7 +85,7 @@ RSpec.describe 'subscriptions' do
       expect(response).to be_successful
       response_data = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response_data[:data][:attributes][:status]).to eq('cancelled')
+      expect(response_data[:data][:attributes][:status]).to eq('canceled')
     end
   end
 end
