@@ -12,9 +12,18 @@ class Api::V1::SubscriptionsController < ApplicationController
     end
   end
 
+  def update
+    subscription = Subscription.find(params[:id])
+    subscription.status = 'cancelled'
+    render json: SubscriptionSerializer.new(subscription), status: 201
+  end
+
   private
 
   def subscription_params
     params.permit(:title, :price, :frequency, :tea_id)
   end
 end
+
+
+# customer.subscriptions.delete(subscription)
