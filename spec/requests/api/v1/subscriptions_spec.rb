@@ -68,4 +68,24 @@ RSpec.describe 'subscriptions' do
       expect(response_data[:status]).to be_a(Integer)
     end
   end
+  describe 'cancel' do
+    it 'cancels a customers subscription' do
+      customer = create(:customer)
+      tea = create(:tea)
+      subscription = customer.subscriptions.create!(
+        title: 'Tea time!',
+        price: 12.5,
+        status: 'active',
+        frequency: 'weekly',
+        tea_id: tea.id
+      )
+
+      patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription.id}"
+
+      expect(response).to be_successful
+      response_data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_data[:data][:attributes][:status]).to eq('cancelled')
+    end
+  end
 end
