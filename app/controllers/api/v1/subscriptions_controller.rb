@@ -15,7 +15,13 @@ class Api::V1::SubscriptionsController < ApplicationController
   def update
     subscription = Subscription.find(params[:id])
     subscription.status = 'canceled'
-    render json: SubscriptionSerializer.new(subscription), status: 201
+    render json: SubscriptionSerializer.new(subscription), status: 202
+  end
+
+  def index
+    customer = Customer.find(params[:customer_id])
+    subscriptions = customer.subscriptions
+    render json: SubscriptionSerializer.new(subscriptions), status: 200
   end
 
   private
@@ -24,6 +30,3 @@ class Api::V1::SubscriptionsController < ApplicationController
     params.permit(:title, :price, :frequency, :tea_id)
   end
 end
-
-
-# customer.subscriptions.delete(subscription)
