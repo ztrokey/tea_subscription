@@ -88,4 +88,40 @@ RSpec.describe 'subscriptions' do
       expect(response_data[:data][:attributes][:status]).to eq('canceled')
     end
   end
+  describe 'index' do
+    it 'shows all a customers subscriptions' do
+      customer = create(:customer)
+      teas = create_list(:tea, 3)
+      tea1 = Tea.first
+      tea2 = Tea.second
+      tea3 = Tea.last
+      customer.subscriptions.create!(
+        title: 'Tea time!',
+        price: 12.5,
+        status: 'active',
+        frequency: 'weekly',
+        tea_id: tea1.id
+      )
+
+      customer.subscriptions.create!(
+        title: 'Pinkys out!',
+        price: 9.99,
+        status: 'canceled',
+        frequency: 'monthly',
+        tea_id: tea3.id
+      )
+
+      get "/api/v1/customers/#{customer.id}/subscriptions"
+
+      expect(response).to be_successful
+      response_data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_data).to be_a(Hash)
+      expect(response_data).to have_key(:data)
+      expect(response_data[:data]).to be_an(Array)
+      expect(response_data[:data].count).to eq(2)
+      expect(response_data[:data].first[:attributes][:tea][:id]).to eq(tea1.id)
+      expect(response_data[:data].last[:attributes][:tea][:id]).to eq(tea3.id)
+    end
+  end
 end
