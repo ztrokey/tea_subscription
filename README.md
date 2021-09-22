@@ -38,6 +38,10 @@ Testing
 
 Run `bundle exec rspec` to run the test suite
 
+## Schema
+
+![Screen Shot 2021-09-22 at 11 28 16 AM](https://user-images.githubusercontent.com/20480167/134392548-4e240d23-7db2-4772-b08d-d168cb9b5398.png)
+
 ## Endpoints Exposed
 
 `GET /api/v1/customers/<customer_id>/subscriptions`
