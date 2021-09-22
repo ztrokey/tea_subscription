@@ -53,6 +53,7 @@ Returns all of a customer’s subsciptions (active and canceled)
             "id": "307",
             "type": "subscription",
             "attributes": {
+                "title": "Dicta tempore molestiae.",
                 "price": 7.29,
                 "status": "active",
                 "frequency": "monthly",
@@ -71,6 +72,7 @@ Returns all of a customer’s subsciptions (active and canceled)
             "id": "308",
             "type": "subscription",
             "attributes": {
+                "title": "Non praesentium quaerat.",
                 "price": 5.97,
                 "status": "canceled",
                 "frequency": "weekly",
@@ -85,6 +87,25 @@ Returns all of a customer’s subsciptions (active and canceled)
                 }
             }
         },
+        {
+            "id": "313",
+            "type": "subscription",
+            "attributes": {
+                "title": "At itaque rerum.",
+                "price": 10.03,
+                "status": "pending",
+                "frequency": "quarterly",
+                "tea": {
+                    "id": 72,
+                    "name": "Sage",
+                    "description": "Fujian New Craft",
+                    "temperature": 212,
+                    "brew_time": 4,
+                    "created_at": "2021-09-22T15:48:12.185Z",
+                    "updated_at": "2021-09-22T15:48:12.185Z"
+                }
+            }
+        }
     ]
 }
 ```
@@ -96,9 +117,10 @@ Subscribes a customer to a new tea subscription
 ```
 {
     "data": {
-        "id": "321",
+        "id": "322",
         "type": "subscription",
         "attributes": {
+            "title": "'New Tea Subscription'",
             "price": 12.34,
             "status": "pending",
             "frequency": "monthly",
@@ -123,20 +145,21 @@ Updates the status of a tea subscription to canceled
 ```
 {
     "data": {
-        "id": "320",
+        "id": "322",
         "type": "subscription",
         "attributes": {
-            "price": 34.93,
+            "title": "'New Tea Subscription'",
+            "price": 12.34,
             "status": "canceled",
             "frequency": "monthly",
             "tea": {
-                "id": 77,
-                "name": "Lapsang Souchong",
-                "description": "English Afternoon",
+                "id": 80,
+                "name": "Vietnamese",
+                "description": "Irish Breakfast",
                 "temperature": 187,
-                "brew_time": 4,
-                "created_at": "2021-09-22T15:48:12.197Z",
-                "updated_at": "2021-09-22T15:48:12.197Z"
+                "brew_time": 5,
+                "created_at": "2021-09-22T15:48:12.204Z",
+                "updated_at": "2021-09-22T15:48:12.204Z"
             }
         }
     }
