@@ -91,7 +91,7 @@ RSpec.describe 'subscriptions' do
   describe 'index' do
     it 'shows all a customers subscriptions' do
       customer = create(:customer)
-      teas = create_list(:tea, 3)
+      create_list(:tea, 3)
       tea1 = Tea.first
       tea2 = Tea.second
       tea3 = Tea.last

@@ -10,45 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_193311) do
-
+ActiveRecord::Schema.define(version: 20_210_920_193_311) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "street_address"
-    t.string "city"
-    t.string "state"
-    t.integer "zip"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'customers', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'email'
+    t.string 'street_address'
+    t.string 'city'
+    t.string 'state'
+    t.integer 'zip'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "subscriptions", force: :cascade do |t|
-    t.string "title"
-    t.float "price"
-    t.integer "status", default: 0
-    t.integer "frequency", default: 1
-    t.bigint "customer_id", null: false
-    t.bigint "tea_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_subscriptions_on_customer_id"
-    t.index ["tea_id"], name: "index_subscriptions_on_tea_id"
+  create_table 'subscriptions', force: :cascade do |t|
+    t.string 'title'
+    t.float 'price'
+    t.integer 'status', default: 0
+    t.integer 'frequency', default: 1
+    t.bigint 'customer_id', null: false
+    t.bigint 'tea_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['customer_id'], name: 'index_subscriptions_on_customer_id'
+    t.index ['tea_id'], name: 'index_subscriptions_on_tea_id'
   end
 
-  create_table "teas", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.integer "temperature"
-    t.integer "brew_time"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'teas', force: :cascade do |t|
+    t.string 'name'
+    t.string 'description'
+    t.integer 'temperature'
+    t.integer 'brew_time'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  add_foreign_key "subscriptions", "customers"
-  add_foreign_key "subscriptions", "teas"
+  add_foreign_key 'subscriptions', 'customers'
+  add_foreign_key 'subscriptions', 'teas'
 end
