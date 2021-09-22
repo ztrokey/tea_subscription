@@ -24,6 +24,8 @@ RSpec.describe 'subscriptions' do
       expect(response_data[:data]).to have_key(:type)
       expect(response_data[:data][:type]).to be_a(String)
       expect(response_data[:data]).to have_key(:attributes)
+      expect(response_data[:data][:attributes]).to have_key(:title)
+      expect(response_data[:data][:attributes][:title]).to be_a(String)
       expect(response_data[:data][:attributes]).to have_key(:price)
       expect(response_data[:data][:attributes][:price]).to be_a(Float)
       expect(response_data[:data][:attributes]).to have_key(:status)
